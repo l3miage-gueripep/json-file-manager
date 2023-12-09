@@ -19,7 +19,7 @@ public class ExportTool {
         JsonArrayBuilder jsonArray = Json.createArrayBuilder();
 
         for(ShapeData shape : shapes){
-            jsonArray.add(shape.getJsonObject());
+            jsonArray.add(getShapeJsonObject(shape));
         }
         return jsonArray;
     }
@@ -30,6 +30,15 @@ public class ExportTool {
             jsonArray.add(createJsonObject(group));
         }
         return jsonArray;
+    }
+
+    public JsonObject getShapeJsonObject(ShapeData shapeData){
+        JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
+        jsonObjectBuilder.add("id", shapeData.getId())
+            .add("type", shapeData.getType())
+            .add("x", shapeData.getX())
+            .add("y", shapeData.getY());
+        return jsonObjectBuilder.build();
     }
 
     public JsonObject createJsonObject(GroupData groupData){

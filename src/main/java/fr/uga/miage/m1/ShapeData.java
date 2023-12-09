@@ -1,15 +1,10 @@
 package fr.uga.miage.m1;
 
-import javax.json.Json;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
-
 public class ShapeData {
     private int id;
     private String type;
     private int x;
     private int y;
-    private JsonObjectBuilder jsonObjectBuilder = Json.createObjectBuilder();
 
     public ShapeData() {
     }
@@ -46,11 +41,5 @@ public class ShapeData {
         this.y = y;
     }
 
-    public JsonObject getJsonObject(){
-        jsonObjectBuilder.add("id", id)
-            .add("type", type)
-            .add("x", x)
-            .add("y", y);
-        return jsonObjectBuilder.build();
-    }
+
 }
