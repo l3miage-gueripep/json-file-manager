@@ -1,38 +1,30 @@
 package fr.uga.miage.m1;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+public class AppTest {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
+    @Test
+    public void testMain() {
+        String[] args = {};
+        App.main(args);
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+        // Check that the export file was created
+        File exportFile = new File("export/export.json");
+        assertTrue(exportFile.exists(), "Export file should exist");
+
+        // Check that the export file is not empty
+        long fileSize = 0;
+        try {
+            fileSize = Files.size(Paths.get("export/export.json"));
+        } catch (IOException e) {
+            fail("Failed to get the size of the export file");
+        }
+        assertTrue(fileSize > 0, "Export file should not be empty");
     }
 }

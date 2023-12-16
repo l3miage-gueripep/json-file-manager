@@ -1,10 +1,18 @@
-package fr.uga.miage.m1;
+package fr.uga.miage.m1.model;
 
 import java.util.List;
 
 public class Export {
     private List<ShapeData> shapes;
     private List<GroupData> groups;
+
+    public Export() {
+    }
+
+    public Export(List<ShapeData> shapes, List<GroupData> groups) {
+        this.shapes = shapes;
+        this.groups = groups;
+    }
 
     public List<GroupData> getGroups() {
         return groups;

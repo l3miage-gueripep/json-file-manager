@@ -1,4 +1,4 @@
-package fr.uga.miage.m1;
+package fr.uga.miage.m1.model;
 
 public class ShapeData {
     private int id;
